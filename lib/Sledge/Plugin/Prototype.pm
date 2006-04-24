@@ -2,7 +2,7 @@ package Sledge::Plugin::Prototype;
 
 use strict;
 use vars qw($VERSION);
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 use HTML::Prototype;
 
@@ -23,7 +23,7 @@ sub import {
         BEFORE_DISPATCH => sub {
             my $self = shift;
             $self->tmpl->param(prototype=>$self->prototype)
-                if ref ($self->tmpl) eq 'Sledge::Template::TT';
+                if ref ($self->tmpl) =~ /^Sledge::Template::TT/;
         } );
 }
 
